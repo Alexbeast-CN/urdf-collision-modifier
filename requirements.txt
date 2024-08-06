@@ -1,0 +1,5 @@
+urdf_parser_py
+lxml
+trimesh
+numpy-stl
+coacd

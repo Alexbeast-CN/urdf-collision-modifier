@@ -1,0 +1,107 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        // Docker tasks
+        {
+            "label": "Run pre-reopen script",
+            "detail": "Relax X server permissions so that local X connections work",
+            "type": "shell",
+            "command": "xhost + local:",
+            "group": "none",
+            "presentation": {
+              "reveal": "silent",
+              "panel": "dedicated"
+            },
+            "problemMatcher": []
+        },
+        // Build tasks
+        {
+            "label": "build",
+            "detail": "Build workspace (default)",
+            "type": "shell",
+            "command": "./.vscode/build.sh",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "debug",
+            "detail": "Build workspace (debug)",
+            "type": "shell",
+            "command": "./.vscode/build.sh",
+            "options": {
+                "env": {
+                    "BUILD_TYPE": "Debug"
+                }
+            },
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        // Test tasks
+        {
+            "label": "test",
+            "detail": "Run all unit tests and show results.",
+            "type": "shell",
+            "command": "./.vscode/test.sh",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        // Clean
+        {
+            "label": "clean",
+            "detail": "Run the clean target",
+            "type": "shell",
+            "command": "colcon build --cmake-target clean",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "purge",
+            "detail": "Purge workspace by deleting all generated files.",
+            "type": "shell",
+            "command": "rm -fr build install log; py3clean .",
+            "problemMatcher": []
+        },
+        // Workspace editing tasks
+        {
+            "label": "new ament_cmake package",
+            "detail": "Create a new ROS cpp package from a template.",
+            "type": "shell",
+            "command": "ros2 pkg create --destination-directory src --build-type ament_cmake ${input:package}",
+            "problemMatcher": []
+        },
+        {
+            "label": "new ament_python package",
+            "detail": "Create a new ROS python package from a template.",
+            "type": "shell",
+            "command": "ros2 pkg create --destination-directory src --build-type ament_python ${input:package}",
+            "problemMatcher": []
+        },
+        {
+            "label": "install dependencies",
+            "detail": "Install all dependencies specified in the workspaces package.xml files.",
+            "type": "shell",
+            "command": "sudo apt-get update && rosdepc update && rosdepc install --from-paths . --ignore-src -y",
+            "problemMatcher": []
+        },
+        {
+            "label": "setup",
+            "detail": "Set up the workspace",
+            "type": "shell",
+            "command": ". install/setup.sh",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "package",
+            "type": "promptString",
+            "description": "Package name"
+        }
+    ]
+}
