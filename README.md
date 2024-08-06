@@ -73,7 +73,7 @@ OpenLoong 机器人在 t = 0.05，pr = 50 分解后，总网格数 = 249：
 
 此命令将处理 URDF 文件，分解其碰撞几何体，并创建一个包含更新后碰撞信息的新 URDF 文件。
 
-为了获得更好的性能，您可以手动使用简单的形状（如球体、圆柱体和立方体）定义碰撞几何体。优艾（Unitree）机器人提供了一些很好的例子，例如 [Unitree Go2](https://github.com/unitreerobotics/unitree_ros/blob/master/robots/go2_description/urdf/go2_description.urdf)
+为了获得更好的性能，您可以手动使用简单的形状（如球体、圆柱体和立方体）定义碰撞几何体。宇树科技（Unitree）提供了一些很好的例子，例如 [Unitree Go2](https://github.com/unitreerobotics/unitree_ros/blob/master/robots/go2_description/urdf/go2_description.urdf)
 
 ![Unitree Go2](assets/Amended_collision_model.png)
 
