@@ -54,7 +54,7 @@ python urdf_collision_modifier.py -u <path_to_urdf> -m <path_to_mesh_directory> 
 
 ### Example:
 
-OpenLoong Robot before decomposition:
+OpenLoong Robot before decomposition, total number of meshes = 32:
 
 ![OpenLoong Robot](assets/visual.png)
 

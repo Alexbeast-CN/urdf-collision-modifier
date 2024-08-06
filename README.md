@@ -53,7 +53,7 @@ python urdf_collision_modifier.py -u <URDF文件路径> -m <网格文件目录�
 
 ### 示例：
 
-OpenLoong 机器人分解前：
+OpenLoong 机器人分解前，总网格数 = 32：
 
 ![OpenLoong 机器人](assets/visual.png)
 
