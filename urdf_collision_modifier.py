@@ -79,6 +79,7 @@ for link in robot.links:
             mesh_base, mesh_ext = os.path.splitext(collision_mesh_file)
             mesh_path_parts = collision_mesh_file.split('/')
             mesh_name = mesh_path_parts[-1]
+            mesh_name_without_ext = mesh_name.split('.')[0]
             
             collision_mesh_file = os.path.join(args.mesh_dir, mesh_name)
             print(f'Processing collision geometry: {mesh_name}')
@@ -94,7 +95,7 @@ for link in robot.links:
             for k, part in enumerate(parts):
                 v, f = part
                 mesh2 = trimesh.Trimesh(v, f)
-                export_name = f'{mesh_name}_{k}.stl'
+                export_name = f'{mesh_name_without_ext}_{k}.stl'
                 export_path = os.path.join(args.mesh_dir, export_name)
                 mesh2.export(export_path)
                 
@@ -106,7 +107,7 @@ for link in robot.links:
             new_collisions[link.name].append(collision)
             total_num_collisions += 1
 
-print(f'There are {len(total_num_collisions)} collisions meshes in the robot')
+print(f'There are {total_num_collisions} collisions meshes in the robot')
 
 # Modify URDF XML
 urdf_xml = robot.to_xml_string()
