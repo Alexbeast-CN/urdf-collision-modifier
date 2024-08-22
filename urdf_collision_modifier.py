@@ -95,9 +95,12 @@ for link in robot.links:
             for k, part in enumerate(parts):
                 v, f = part
                 mesh2 = trimesh.Trimesh(v, f)
-                export_name = f'{mesh_name_without_ext}_{k}.stl'
+                
+                convex_hull = mesh2.convex_hull
+                
+                export_name = f'{mesh_name_without_ext}_{k}.obj'
                 export_path = os.path.join(args.mesh_dir, export_name)
-                mesh2.export(export_path)
+                convex_hull.export(export_path)
                 
                 new_collision = copy.deepcopy(collision)
                 new_collision.geometry.filename = f'file://{export_path}'
