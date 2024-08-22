@@ -1,5 +1,4 @@
-urdf_parser_py
-lxml
-trimesh
-numpy-stl
-coacd
+urdf_parser_py~=0.0.4
+lxml~=4.8.0
+trimesh~=4.1.8
+coacd~=1.0.5
